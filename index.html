@@ -14,25 +14,18 @@
     </div>
 
     <div class="container">
-    
-        
-
     </div>
-
-
     <script>
         //query selectors
         var search = document.querySelector('.search');
-        var btn1 = document.querySelector('.submitButton');
+        var button = document.querySelector('.submitButton');
         let container = document.querySelector(".container")
         //event Listeners
-        //event Listeners
-        btn1.addEventListener('click',function(name){
+        
+        button.addEventListener('click',function(name){
 
-            // console.log(name.value)
-    
-            fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search.value}`)
-            .then(response=>response.json())
+             fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search.value}`)
+            .then(res=>res.json())
             .then(data=>{
                 container.innerHTML = ""
                 let food=data['meals']
@@ -44,11 +37,11 @@
                     let result= `<div>
                         <h1>${strMeal}</h1>
                         <img src="${strMealThumb}" alt="" >
-                        <h2>${strInstructions}</h2>
+                        <h1>${strInstructions}</h1>
                         </div> `
                     container.innerHTML += result
                 })
-            }).catch(err=>alert("error"))
+            }).catch(err=>alert("error message"))
     
         })
     </script>
